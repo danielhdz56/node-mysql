@@ -19,8 +19,10 @@ mysql.createConnection({
     var result = connection.query('select * from programming_languages');
     connection.end();
     return result;
+}).then((result) => {
+    console.log(result[0].languages);
 }).catch((err) => {
     if (connection && connection.end) connection.end();
     //logs out the error 
-    console.log(err);
+    console.log(`Error ${err}`);
 });
